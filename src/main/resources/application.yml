@@ -8,4 +8,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/revaturelabs/rms-configuration-repo
+          uri: https://github.com/rms-191216-java-usf/rms-configuration-repo
