@@ -1,10 +1,8 @@
-
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-ARG JAVA_OPTS
-ENV JAVA_OPTS=$JAVA_OPTS
-ADD target/config-service-0.0.1-SNAPSHOT.jar rms-config-service.jar
-EXPOSE 8888
-# ENTRYPOINT exec java $JAVA_OPTS -jar rms-config-service.jar
-# For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
-ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar rms-config-service.jar
+ARG JAR_FILE
+ARG SPRING_ENV
+ENV spring_profiles_active=$SPRING_ENV
+EXPOSE 80
+COPY target/${JAR_FILE} app.jar
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/urandom -jar /app.jar" ]
