@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: config-service
+  profiles:
+    active: ${ACTIVE_PROFILES:local}
 ---
 spring:
   profiles: local
