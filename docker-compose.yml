@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  rms-config-service:
-    image: rms-config-service
-    build: .
-    ports:
-      - 8888
